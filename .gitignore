@@ -35,3 +35,10 @@
 
 # Composer PHAR
 /composer.phar
+
+# JL 20151014
+/app/*
+/web/*
+_README.md
+/src/AppBundle
+/src/.htaccess
