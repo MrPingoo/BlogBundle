@@ -16,4 +16,49 @@ class FrontendController extends Controller
     {
         return array('siteName' => 'Blog');
     }
+
+    /**
+     * @Route("/snippets")
+     * @Template()
+     */
+    public function snippetsAction()
+    {
+        return array('siteName' => 'Blog');
+    }
+
+    /**
+     * @Route("/posts")
+     * @Template()
+     */
+    public function postsAction()
+    {
+        return array('siteName' => 'Blog');
+    }
+
+    /**
+     * @Route("/post/{name}")
+     * @Template()
+     */
+    public function postAction($name)
+    {
+        return array('siteName' => 'Blog');
+    }
+
+    /**
+     * @Route("/way")
+     * @Template()
+     */
+    public function wayAction()
+    {
+        return array('siteName' => 'Blog');
+    }
+
+    /**
+     * @Route("/contact")
+     * @Template()
+     */
+    public function contactAction()
+    {
+        return array('siteName' => 'Blog');
+    }
 }

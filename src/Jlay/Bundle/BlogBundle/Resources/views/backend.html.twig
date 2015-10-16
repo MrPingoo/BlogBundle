@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Blog d'un développeur Web (Php, Symfony, GIT, Vagrant, Puphpet, Debian, Ubuntu, Solr, WP, Drupal 6, TYPO3)">
+    <meta name="author" content="Julian Layen">
+
+    <title>{% block title %}Julian Layen - Admin Area{% endblock %}</title>
+
+    <!-- Bootstrap Core CSS and custom -->
+    {% block stylesheets %}
+        {% stylesheets  '@JlayBlogBundle/Resources/public/css/bootstrap.min.css'
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+</head>
+
+<body>
+
+{% block body %}{% endblock %}
+
+{% block javascripts %}
+    {% javascripts  '@JlayBlogBundle/Resources/public/js/jquery.min.js'
+    '@JlayBlogBundle/Resources/public/js/bootstrap.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+</body>
+
+</html>

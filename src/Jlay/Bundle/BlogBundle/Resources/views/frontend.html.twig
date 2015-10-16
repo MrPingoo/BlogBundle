@@ -1,14 +1,77 @@
 {# @JlayBlogBundle/Resources/views/frontend.html.twig #}
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Blog d'un développeur Web (Php, Symfony, GIT, Vagrant, Puphpet, Debian, Ubuntu, Solr, WP, Drupal 6, TYPO3)">
+    <meta name="author" content="Julian Layen">
+
+    <title>{% block title %}Julian Layen - Développeur Web{% endblock %}</title>
+
+    <!-- Bootstrap Core CSS and custom -->
+    {% block stylesheets %}
+        {% stylesheets  '@JlayBlogBundle/Resources/public/css/bootstrap.min.css'
+                        '@JlayBlogBundle/Resources/public/css/clean-blog.min.css'
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Email encoding -->
+    <script type="text/javascript"> <!--
+        function UnCryptMailto( s )
+        {
+            var n = 0;
+            var r = "";
+            for( var i = 0; i < s.length; i++)
+            {
+                n = s.charCodeAt( i );
+                if( n >= 8364 )
+                {
+                    n = 128;
+                }
+                r += String.fromCharCode( n - 1 );
+            }
+            return r;
+        }
+
+        function linkTo_UnCryptMailto( s )
+        {
+            location.href=UnCryptMailto( s );
+        }
+        // --> </script>
+
+</head>
+
+<body>
+
+    {% block body %}{% endblock %}
+
+    {% block javascripts %}
+        {% javascripts  '@JlayBlogBundle/Resources/public/js/jquery.min.js'
+        '@JlayBlogBundle/Resources/public/js/bootstrap.min.js'
+        '@JlayBlogBundle/Resources/public/js/clean-blog.min.js' %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock %}
+
+</body>
+
 </html>
