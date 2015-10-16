@@ -38,7 +38,8 @@
 
 # JL 20151014
 /app/*
-# /web/*
+/web/js/*
+/web/css/*
 _README.md
 /src/AppBundle
 /src/.htaccess
