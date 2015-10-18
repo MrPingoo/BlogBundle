@@ -18,15 +18,6 @@ class BackendController extends Controller
     }
 
     /**
-     * @Route("/admin/post")
-     * @Template()
-     */
-    public function postAction()
-    {
-        return array('siteName' => 'Blog');
-    }
-
-    /**
      * @Route("/admin/snippets")
      * @Template()
      */
