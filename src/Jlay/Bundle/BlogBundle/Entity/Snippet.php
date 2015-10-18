@@ -5,12 +5,12 @@ namespace Jlay\Bundle\BlogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Post
+ * Snippet
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Jlay\Bundle\BlogBundle\Entity\SnippetRepository")
  */
-class Post
+class Snippet
 {
     /**
      * @var integer
@@ -36,6 +36,13 @@ class Post
     private $deleted;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="crdate", type="datetime")
+     */
+    private $crdate;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
@@ -48,13 +55,6 @@ class Post
      * @ORM\Column(name="author", type="string", length=255)
      */
     private $author;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="crdate", type="datetime")
-     */
-    private $crdate;
 
     /**
      * @var string
@@ -86,7 +86,7 @@ class Post
      *
      * @param boolean $hidden
      *
-     * @return Post
+     * @return Snippet
      */
     public function setHidden($hidden)
     {
@@ -110,7 +110,7 @@ class Post
      *
      * @param boolean $deleted
      *
-     * @return Post
+     * @return Snippet
      */
     public function setDeleted($deleted)
     {
@@ -130,11 +130,35 @@ class Post
     }
 
     /**
+     * Set crdate
+     *
+     * @param \DateTime $crdate
+     *
+     * @return Snippet
+     */
+    public function setCrdate($crdate)
+    {
+        $this->crdate = $crdate;
+
+        return $this;
+    }
+
+    /**
+     * Get crdate
+     *
+     * @return \DateTime
+     */
+    public function getCrdate()
+    {
+        return $this->crdate;
+    }
+
+    /**
      * Set title
      *
      * @param string $title
      *
-     * @return Post
+     * @return Snippet
      */
     public function setTitle($title)
     {
@@ -158,7 +182,7 @@ class Post
      *
      * @param string $author
      *
-     * @return Post
+     * @return Snippet
      */
     public function setAuthor($author)
     {
@@ -178,35 +202,11 @@ class Post
     }
 
     /**
-     * Set crdate
-     *
-     * @param \DateTime $crdate
-     *
-     * @return Post
-     */
-    public function setCrdate($crdate)
-    {
-        $this->crdate = $crdate;
-
-        return $this;
-    }
-
-    /**
-     * Get crdate
-     *
-     * @return \DateTime
-     */
-    public function getCrdate()
-    {
-        return $this->crdate;
-    }
-
-    /**
      * Set path
      *
      * @param string $path
      *
-     * @return Post
+     * @return Snippet
      */
     public function setPath($path)
     {
@@ -230,7 +230,7 @@ class Post
      *
      * @param string $bodytext
      *
-     * @return Post
+     * @return Snippet
      */
     public function setBodytext($bodytext)
     {
