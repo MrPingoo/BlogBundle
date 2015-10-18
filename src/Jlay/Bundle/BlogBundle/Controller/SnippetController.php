@@ -13,7 +13,6 @@ use Jlay\Bundle\BlogBundle\Form\SnippetType;
 /**
  * Snippet controller.
  *
- * @Route("/snippet")
  */
 class SnippetController extends Controller
 {
@@ -21,7 +20,7 @@ class SnippetController extends Controller
     /**
      * Lists all Snippet entities.
      *
-     * @Route("/", name="snippet")
+     * @Route("/admin/snippet", name="snippet")
      * @Method("GET")
      * @Template()
      */
@@ -38,7 +37,7 @@ class SnippetController extends Controller
     /**
      * Creates a new Snippet entity.
      *
-     * @Route("/", name="snippet_create")
+     * @Route("/admin/snippet/new", name="snippet_create")
      * @Method("POST")
      * @Template("JlayBlogBundle:Snippet:new.html.twig")
      */
@@ -84,7 +83,7 @@ class SnippetController extends Controller
     /**
      * Displays a form to create a new Snippet entity.
      *
-     * @Route("/new", name="snippet_new")
+     * @Route("/admin/snippet/new", name="snippet_new")
      * @Method("GET")
      * @Template()
      */
@@ -102,7 +101,7 @@ class SnippetController extends Controller
     /**
      * Finds and displays a Snippet entity.
      *
-     * @Route("/{id}", name="snippet_show")
+     * @Route("/admin/snippet/{id}", name="snippet_show")
      * @Method("GET")
      * @Template()
      */
@@ -127,7 +126,7 @@ class SnippetController extends Controller
     /**
      * Displays a form to edit an existing Snippet entity.
      *
-     * @Route("/{id}/edit", name="snippet_edit")
+     * @Route("/admin/snippet/{id}/edit", name="snippet_edit")
      * @Method("GET")
      * @Template()
      */
@@ -172,7 +171,7 @@ class SnippetController extends Controller
     /**
      * Edits an existing Snippet entity.
      *
-     * @Route("/{id}", name="snippet_update")
+     * @Route("/admin/snippet/{id}/edit", name="snippet_update")
      * @Method("PUT")
      * @Template("JlayBlogBundle:Snippet:edit.html.twig")
      */
@@ -205,7 +204,7 @@ class SnippetController extends Controller
     /**
      * Deletes a Snippet entity.
      *
-     * @Route("/{id}", name="snippet_delete")
+     * @Route("/admin/snippet/{id}/delete", name="snippet_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)

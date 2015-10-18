@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends '@JlayBlogBundle/Resources/views/backend.html.twig' %}
 
 {% block body -%}
     <h1>Post</h1>
@@ -42,12 +42,12 @@
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('admin') }}">
+        <a href="{{ path('post') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('admin_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('post_edit', { 'id': entity.id }) }}">
             Edit
         </a>
     </li>

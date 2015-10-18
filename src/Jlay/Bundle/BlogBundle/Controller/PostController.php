@@ -20,7 +20,7 @@ class PostController extends Controller
     /**
      * Lists all Post entities.
      *
-     * @Route("/admin/post", name="admin")
+     * @Route("/admin/post", name="post")
      * @Method("GET")
      * @Template()
      */
@@ -37,7 +37,7 @@ class PostController extends Controller
     /**
      * Creates a new Post entity.
      *
-     * @Route("/admin/post/new", name="admin_create")
+     * @Route("/admin/post/new", name="post_create")
      * @Method("POST")
      * @Template("JlayBlogBundle:Post:new.html.twig")
      */
@@ -52,7 +52,7 @@ class PostController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('post_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -71,7 +71,7 @@ class PostController extends Controller
     private function createCreateForm(Post $entity)
     {
         $form = $this->createForm(new PostType(), $entity, array(
-            'action' => $this->generateUrl('admin_create'),
+            'action' => $this->generateUrl('post_create'),
             'method' => 'POST',
         ));
 
@@ -83,7 +83,7 @@ class PostController extends Controller
     /**
      * Displays a form to create a new Post entity.
      *
-     * @Route("/admin/post/new", name="admin_new")
+     * @Route("/admin/post/new", name="post_new")
      * @Method("GET")
      * @Template()
      */
@@ -101,7 +101,7 @@ class PostController extends Controller
     /**
      * Finds and displays a Post entity.
      *
-     * @Route("/admin/post/{id}", name="admin_show")
+     * @Route("/admin/post/{id}", name="post_show")
      * @Method("GET")
      * @Template()
      */
@@ -126,7 +126,7 @@ class PostController extends Controller
     /**
      * Displays a form to edit an existing Post entity.
      *
-     * @Route("/admin/post/{id}/edit", name="admin_edit")
+     * @Route("/admin/post/{id}/edit", name="post_edit")
      * @Method("GET")
      * @Template()
      */
@@ -160,7 +160,7 @@ class PostController extends Controller
     private function createEditForm(Post $entity)
     {
         $form = $this->createForm(new PostType(), $entity, array(
-            'action' => $this->generateUrl('admin_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('post_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -171,7 +171,7 @@ class PostController extends Controller
     /**
      * Edits an existing Post entity.
      *
-     * @Route("/admin/post/{id}/edit", name="admin_update")
+     * @Route("/admin/post/{id}/edit", name="post_update")
      * @Method("PUT")
      * @Template("JlayBlogBundle:Post:edit.html.twig")
      */
@@ -192,7 +192,7 @@ class PostController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('post_edit', array('id' => $id)));
         }
 
         return array(
@@ -204,7 +204,7 @@ class PostController extends Controller
     /**
      * Deletes a Post entity.
      *
-     * @Route("/admin/post/{id}/delete", name="admin_delete")
+     * @Route("/admin/post/{id}/delete", name="post_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -237,7 +237,7 @@ class PostController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('post_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

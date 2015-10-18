@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends '@JlayBlogBundle/Resources/views/backend.html.twig' %}
 
 {% block body -%}
     <h1>Post list</h1>
@@ -20,7 +20,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('admin_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('post_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.hidden }}</td>
                 <td>{{ entity.deleted }}</td>
                 <td>{{ entity.title }}</td>
@@ -31,10 +31,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('admin_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('post_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('admin_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('post_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -45,7 +45,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('admin_new') }}">
+            <a href="{{ path('post_new') }}">
                 Create a new entry
             </a>
         </li>
