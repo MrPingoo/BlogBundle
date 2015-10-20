@@ -13,6 +13,21 @@
             {{ form_start(form, {'attr':{'role':'form'}}) }}
                 {{ form_errors(form) }}
                 <div class="form-group">
+                    {{ form_label(form.hidden) }}
+                    {{ form_errors(form.hidden) }}
+                    {{ form_widget(form.hidden) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.deleted) }}
+                    {{ form_errors(form.deleted) }}
+                    {{ form_widget(form.deleted) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.crdate) }}
+                    {{ form_errors(form.crdate) }}
+                    {{ form_widget(form.crdate) }}
+                </div>
+                <div class="form-group">
                     {{ form_label(form.path) }}
                     {{ form_errors(form.path) }}
                     {{ form_widget(form.path, {'attr':{'class':'form-control','placeholder':'Path du post ...'}}) }}
@@ -30,24 +45,19 @@
                 <div class="form-group">
                     {{ form_label(form.bodytext) }}
                     {{ form_errors(form.bodytext) }}
-                    {{ form_widget(form.bodytext, {'attr':{'class':'form-control','placeholder':'Detail du post ...','value':'Julian Layen'}}) }}
+                    {{ form_widget(form.bodytext, {'attr':{'class':'form-control','placeholder':'Detail du post ...','value':''}}) }}
                 </div>
 
-                <button type="submit" class="btn btn-default">Submit Button</button>
-                <button type="reset" class="btn btn-default">Reset Button</button>
+                {{ form_widget(form.submit, {'attr':{'class':'btn btn-lg btn-success'}}) }}
+                <button type="reset" class="btn btn-warning btn-lg">Vider</button>
 
             {{ form_end(form) }}
+            
+            <a href="{{ path('post') }}" class="btn btn-primary btn-lg active pull-right" role="button">Retour à la liste</a>
 
         </div>
+
     </div>
 
 
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('post') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}

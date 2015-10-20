@@ -24,14 +24,14 @@ class Post
     /**
      * @var boolean
      *
-     * @ORM\Column(name="hidden", type="boolean")
+     * @ORM\Column(name="hidden", type="boolean", nullable=true)
      */
     private $hidden;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="deleted", type="boolean")
+     * @ORM\Column(name="deleted", type="boolean", nullable=true)
      */
     private $deleted;
 
@@ -52,7 +52,7 @@ class Post
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="crdate", type="datetime")
+     * @ORM\Column(name="crdate", type="datetime", nullable=true)
      */
     private $crdate;
 

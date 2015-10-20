@@ -14,7 +14,13 @@ class FrontendController extends Controller
      */
     public function indexAction()
     {
-        return array('siteName' => 'Blog');
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('JlayBlogBundle:Post')->findAll();
+
+        return array(
+            'entities' => $entities,
+        );
     }
 
     /**

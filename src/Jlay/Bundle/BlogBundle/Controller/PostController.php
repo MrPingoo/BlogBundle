@@ -74,8 +74,19 @@ class PostController extends Controller
             'action' => $this->generateUrl('post_create'),
             'method' => 'POST',
         ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('bodytext', 'ckeditor', array( 'config' => array(
+            'filebrowserBrowseRoute'           => 'file',
+            'filebrowserBrowseRouteParameters' => array('path' => '/uploads/media/'),
+            'filebrowserBrowseRouteAbsolute'   => true,
+            ),
+        ));
+        $form->add('crdate', 'datetime', array(
+            'format' => 'dd/MM/yyyy hh:mm',
+            'input' => 'datetime',
+            'widget' => 'single_text',
+            'data' => new \DateTime("now")
+        ));
+        $form->add('submit', 'submit', array('label' => 'Créer'));
 
         return $form;
     }
@@ -163,7 +174,18 @@ class PostController extends Controller
             'action' => $this->generateUrl('post_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
-
+        $form->add('bodytext', 'ckeditor', array( 'config' => array(
+            'filebrowserBrowseRoute'           => 'file',
+            'filebrowserBrowseRouteParameters' => array('path' => '/uploads/media/'),
+            'filebrowserBrowseRouteAbsolute'   => true,
+            ),
+        ));
+        $form->add('crdate', 'datetime', array(
+            'format' => 'dd/MM/yyyy hh:mm',
+            'input' => 'datetime',
+            'widget' => 'single_text',
+            'data' => new \DateTime("now")
+        ));
         $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
