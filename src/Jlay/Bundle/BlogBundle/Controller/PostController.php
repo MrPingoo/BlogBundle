@@ -74,12 +74,7 @@ class PostController extends Controller
             'action' => $this->generateUrl('post_create'),
             'method' => 'POST',
         ));
-        $form->add('bodytext', 'ckeditor', array( 'config' => array(
-            'filebrowserBrowseRoute'           => 'file',
-            'filebrowserBrowseRouteParameters' => array('path' => '/uploads/media/'),
-            'filebrowserBrowseRouteAbsolute'   => true,
-            ),
-        ));
+        $form->add('bodytext', 'ckeditor');
         $form->add('crdate', 'datetime', array(
             'format' => 'dd/MM/yyyy hh:mm',
             'input' => 'datetime',
