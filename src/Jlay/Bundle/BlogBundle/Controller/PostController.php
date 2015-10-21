@@ -169,12 +169,13 @@ class PostController extends Controller
             'action' => $this->generateUrl('post_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
-        $form->add('bodytext', 'ckeditor', array( 'config' => array(
+        $form->add('bodytext', 'ckeditor'
+            /*, array( 'config' => array(
             'filebrowserBrowseRoute'           => 'file',
             'filebrowserBrowseRouteParameters' => array('path' => '/uploads/media/'),
             'filebrowserBrowseRouteAbsolute'   => true,
             ),
-        ));
+        )*/);
         $form->add('crdate', 'datetime', array(
             'format' => 'dd/MM/yyyy hh:mm',
             'input' => 'datetime',
