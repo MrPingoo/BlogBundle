@@ -37,7 +37,7 @@
 /composer.phar
 
 # JL 20151014
-/app/*
+# /app/*
 /web/js/*
 /web/css/*
 _README.md

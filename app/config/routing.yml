@@ -1,0 +1,11 @@
+jlay_blog:
+    resource: "@JlayBlogBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
