@@ -242,7 +242,7 @@ class PostController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin'));
+        return $this->redirect($this->generateUrl('post'));
     }
 
     /**

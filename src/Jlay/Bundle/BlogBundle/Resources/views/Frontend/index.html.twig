@@ -61,6 +61,23 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% for entity in entities %}
+                    <div class="post-preview">
+                        <a href="{{ path('jlay_blog_frontend_post', { 'name': entity.id }) }}">
+                            <h2 class="post-title">
+                                {{ entity.title[:60] }}
+                            </h2>
+
+                            <h3 class="post-subtitle">
+                                {{ entity.bodytext|striptags [:100] }}...
+                            </h3>
+
+                        </a>
+                        <p class="post-meta">Posté par <a href="{{ path('jlay_blog_frontend_way') }}">{{ entity.author }}</a>, le {{ entity.crdate|date("d F Y", timezone="Europe/Paris") }}</p>
+                    </div>
+                    <hr>
+                {% endfor %}
+                {#
                 <div class="post-preview">
                     <a href="post.html">
                         <h2 class="post-title">
@@ -114,6 +131,7 @@
                     <p class="post-meta">Posté par <a href="#">Julian Layen</a>, le 24 septembre 2014</p>
                 </div>
                 <hr>
+                #}
                 <!-- Pager -->
                 <ul class="pager">
                     <li class="next">

@@ -16,7 +16,7 @@ class FrontendController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JlayBlogBundle:Post')->findAll();
+        $entities = $em->getRepository('JlayBlogBundle:Post')->findAll(array('crdate' => 'DESC'), null, 4, null);
 
         return array(
             'entities' => $entities,
