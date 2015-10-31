@@ -16,7 +16,7 @@ class FrontendController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JlayBlogBundle:Post')->findAll(array('crdate' => 'DESC'), null, 4, null);
+        $entities = $em->getRepository('JlayBlogBundle:Post')->findBy(array(), array('crdate' => 'DESC'), 4, null);
 
         return array(
             'entities' => $entities,
@@ -38,7 +38,13 @@ class FrontendController extends Controller
      */
     public function postsAction()
     {
-        return array('siteName' => 'Blog');
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('JlayBlogBundle:Post')->findBy(array(), array('crdate' => 'DESC'), null, null);
+
+        return array(
+            'entities' => $entities,
+        );
     }
 
     /**
@@ -47,7 +53,13 @@ class FrontendController extends Controller
      */
     public function postAction($name)
     {
-        return array('siteName' => 'Blog');
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('JlayBlogBundle:Post')->find($name);
+
+        return array(
+            'entity' => $entity,
+        );
     }
 
     /**

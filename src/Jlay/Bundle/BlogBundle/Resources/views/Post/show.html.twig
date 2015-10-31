@@ -1,56 +1,37 @@
-{% extends '@JlayBlogBundle/Resources/views/backend.html.twig' %}
+{# @JlayBlogBundle/Resources/views/Frontend/post.html.twig #}
 
-{% block body -%}
-    <h1>Post</h1>
+{% extends '@JlayBlogBundle/Resources/views/frontend.html.twig' %}
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Hidden</th>
-                <td>{{ entity.hidden }}</td>
-            </tr>
-            <tr>
-                <th>Deleted</th>
-                <td>{{ entity.deleted }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ entity.title }}</td>
-            </tr>
-            <tr>
-                <th>Author</th>
-                <td>{{ entity.author }}</td>
-            </tr>
-            <tr>
-                <th>Crdate</th>
-                <td>{{ entity.crdate|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Path</th>
-                <td>{{ entity.path }}</td>
-            </tr>
-            <tr>
-                <th>Bodytext</th>
-                <td>{{ entity.bodytext|raw }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('post') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('post_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+{% block pageHeader %}
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('/images/chromecast/{{ random(20) }}.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>{{ entity.title }}</h1>
+                        <h2 class="subheading">{{ entity.subtitle }}</h2>
+                        <span class="meta">Posté par <a href="{{ path('jlay_blog_frontend_way') }}">{{ entity.author }}</a>, le {{ entity.crdate|localizeddate('full', 'none') }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 {% endblock %}
+
+{% block body %}
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {{ entity.bodytext|raw }}
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+{% endblock %}
+

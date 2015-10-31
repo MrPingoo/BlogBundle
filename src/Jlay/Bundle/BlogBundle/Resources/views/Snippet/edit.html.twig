@@ -1,16 +1,67 @@
 {% extends '@JlayBlogBundle/Resources/views/backend.html.twig' %}
 
 {% block body -%}
-    <h1>Snippet edit</h1>
+    <h1>Snippet creation</h1>
 
-    {{ form(edit_form) }}
+    {# {{ form(form) }} #}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('snippet') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    {# {{  dump() }} #}
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            {{ form_start(edit_form, {'attr':{'role':'form'}}) }}
+            {{ form_errors(edit_form) }}
+            <div class="form-group">
+                {{ form_label(edit_form.hidden) }}
+                {{ form_errors(edit_form.hidden) }}
+                {{ form_widget(edit_form.hidden) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.deleted) }}
+                {{ form_errors(edit_form.deleted) }}
+                {{ form_widget(edit_form.deleted) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.crdate) }}
+                {{ form_errors(edit_form.crdate) }}
+                {{ form_widget(edit_form.crdate) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.path) }}
+                {{ form_errors(edit_form.path) }}
+                {{ form_widget(edit_form.path, {'attr':{'class':'form-control','placeholder':'Sous titre du snippet ...'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.title) }}
+                {{ form_errors(edit_form.title) }}
+                {{ form_widget(edit_form.title, {'attr':{'class':'form-control','placeholder':'Titre du snippet ...'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.author) }}
+                {{ form_errors(edit_form.author) }}
+                {{ form_widget(edit_form.author, {'attr':{'class':'form-control','placeholder':'Auteur du snippet ...'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.bodytext) }}
+                {{ form_errors(edit_form.bodytext) }}
+                {{ form_widget(edit_form.bodytext, {'attr':{'class':'form-control','placeholder':'Detail du snippet ...','value':''}}) }}
+            </div>
+
+            {{ form_widget(edit_form.submit, {'attr':{'class':'btn btn-lg btn-success'}}) }}
+            <button type="reset" class="btn btn-warning btn-lg">Vider</button>
+
+            {{ form_end(edit_form) }}
+
+            <a href="{{ path('snippet') }}" class="btn btn-primary btn-lg active pull-right" role="button">Retour à la liste</a>
+
+            {{ form_start(delete_form) }}
+            {{ form_widget(delete_form.submit, {'attr':{'class':'btn btn-warning btn-lg active pull-right'}}) }}
+            {{ form_end(delete_form) }}
+        </div>
+
+    </div>
+
+
 {% endblock %}
+

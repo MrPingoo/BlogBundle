@@ -59,9 +59,9 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="path", type="string", length=255)
+     * @ORM\Column(name="subtitle", type="string", length=255)
      */
-    private $path;
+    private $subtitle;
 
     /**
      * @var string
@@ -202,27 +202,27 @@ class Post
     }
 
     /**
-     * Set path
+     * Set subtitle
      *
-     * @param string $path
+     * @param string $subtitle
      *
      * @return Post
      */
-    public function setPath($path)
+    public function setSubtitle($subtitle)
     {
-        $this->path = $path;
+        $this->subtitle = $subtitle;
 
         return $this;
     }
 
     /**
-     * Get path
+     * Get subtitle
      *
      * @return string
      */
-    public function getPath()
+    public function getSubtitle()
     {
-        return $this->path;
+        return $this->subtitle;
     }
 
     /**

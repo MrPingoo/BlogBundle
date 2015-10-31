@@ -1,0 +1,37 @@
+{# @JlayBlogBundle/Resources/views/Frontend/post.html.twig #}
+
+{% extends '@JlayBlogBundle/Resources/views/frontend.html.twig' %}
+
+{% block pageHeader %}
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('/images/chromecast/{{ random(20) }}.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>{{ entity.title }}</h1>
+                        <h2 class="subheading">{{ entity.subtitle }}</h2>
+                        <span class="meta">Posté par <a href="{{ path('jlay_blog_frontend_way') }}">{{ entity.author }}</a>, le {{ entity.crdate|localizeddate('full', 'none') }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block body %}
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {{ entity.bodytext|raw }}
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+{% endblock %}
+

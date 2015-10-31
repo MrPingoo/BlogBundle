@@ -1,0 +1,42 @@
+{# @JlayBlogBundle/Resources/views/Frontend/index.html.twig #}
+
+{% extends '@JlayBlogBundle/Resources/views/frontend.html.twig' %}
+
+{% block body %}
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% for entity in entities %}
+                    <div class="post-preview">
+                        <a href="{{ path('jlay_blog_frontend_post', { 'name': entity.id }) }}">
+                            <h2 class="post-title">
+                                {{ entity.title[:60] }}
+                            </h2>
+
+                            <h3 class="post-subtitle">
+                                {{ entity.bodytext|striptags [:100] }}...
+                            </h3>
+
+                        </a>
+                        <p class="post-meta">Posté par <a href="{{ path('jlay_blog_frontend_way') }}">{{ entity.author }}</a>, le {{ entity.crdate|localizeddate('full', 'none') }}</p>
+                    </div>
+                    <hr>
+                {% endfor %}
+
+                <!-- Pager -->
+                {#
+                <ul class="pager">
+                    <li class="next">
+                        <a href="{{ path('jlay_blog_frontend_posts') }}">Anciens articles &rarr;</a>
+                    </li>
+                </ul>
+                #}
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+{% endblock %}

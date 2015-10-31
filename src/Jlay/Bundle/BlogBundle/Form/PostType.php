@@ -20,7 +20,7 @@ class PostType extends AbstractType
             ->add('title')
             ->add('author')
             ->add('crdate')
-            ->add('path')
+            ->add('subtitle')
             ->add('bodytext')
         ;
     }
