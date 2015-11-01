@@ -16,7 +16,7 @@ class PostType extends AbstractType
     {
         $builder
             ->add('hidden')
-            ->add('deleted')
+            ->add('disqus')
             ->add('title')
             ->add('author')
             ->add('crdate')

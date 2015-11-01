@@ -1,0 +1,38 @@
+{# @JlayBlogBundle/Resources/views/Frontend/index.html.twig #}
+
+{% extends '@JlayBlogBundle/Resources/views/frontend.html.twig' %}
+
+{% block body %}
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% set i = 1 %}
+                {% for key, entity  in paths %}
+                    <div class="post-preview">
+                        <a href="{{ path('jlay_blog_frontend_snippet', { 'id': i }) }}">
+                            <h2 class="post-title">
+                                {{ entity }}
+                            </h2>
+                        </a>
+                    </div>
+                    <hr>
+                    {% set i = i + 1 %}
+                {% endfor %}
+
+                <!-- Pager -->
+                {#
+                <ul class="pager">
+                    <li class="next">
+                        <a href="{{ path('jlay_blog_frontend_posts') }}">Anciens articles &rarr;</a>
+                    </li>
+                </ul>
+                #}
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+{% endblock %}

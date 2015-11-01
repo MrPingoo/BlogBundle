@@ -16,6 +16,7 @@
     {% block stylesheets %}
         {% stylesheets  '@JlayBlogBundle/Resources/public/css/bootstrap.min.css'
                         '@JlayBlogBundle/Resources/public/css/clean-blog.min.css'
+                        '@JlayBlogBundle/Resources/public/css/highlight/github.css'
         filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}"/>
         {% endstylesheets %}
@@ -179,9 +180,11 @@
     {% block javascripts %}
         {% javascripts  '@JlayBlogBundle/Resources/public/js/jquery.min.js'
         '@JlayBlogBundle/Resources/public/js/bootstrap.min.js'
-        '@JlayBlogBundle/Resources/public/js/clean-blog.min.js' %}
+        '@JlayBlogBundle/Resources/public/js/clean-blog.min.js'
+        '@JlayBlogBundle/Resources/public/js/highlight.pack.js'%}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
+        <script>hljs.initHighlightingOnLoad();</script>
     {% endblock %}
 
 </body>

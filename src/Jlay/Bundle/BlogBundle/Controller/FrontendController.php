@@ -16,7 +16,7 @@ class FrontendController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JlayBlogBundle:Post')->findBy(array(), array('crdate' => 'DESC'), 4, null);
+        $entities = $em->getRepository('JlayBlogBundle:Post')->findBy(array('hidden' => 0), array('crdate' => 'DESC'), 4, null);
 
         return array(
             'entities' => $entities,
@@ -29,7 +29,23 @@ class FrontendController extends Controller
      */
     public function snippetsAction()
     {
-        return array('siteName' => 'Blog');
+        return array('paths' => array('Php', 'TYPO3', 'Symfony', 'CSS', 'Solr', 'AdminSys', 'Veille', 'Autre'));
+    }
+
+    /**
+     * @Route("/snippet/{id}")
+     * @Template()
+     */
+    public function snippetAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('JlayBlogBundle:Snippet')->findBy(array('hidden' => 0, 'deleted' => 0, 'path' => $id), array('crdate' => 'DESC'), null, null);
+
+        return array(
+            'entities' => $entities,
+            'paths' => array(1 => 'Php', 2 => 'TYPO3', 3 => 'Symfony', 4 => 'CSS', 5 => 'Solr', 6 => 'AdminSys', 7 => 'Veille', 8 => 'Autre')
+        );
     }
 
     /**
@@ -40,7 +56,7 @@ class FrontendController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JlayBlogBundle:Post')->findBy(array(), array('crdate' => 'DESC'), null, null);
+        $entities = $em->getRepository('JlayBlogBundle:Post')->findBy(array('hidden' => 0), array('crdate' => 'DESC'), null, null);
 
         return array(
             'entities' => $entities,
@@ -68,7 +84,7 @@ class FrontendController extends Controller
      */
     public function wayAction()
     {
-        return array('siteName' => 'Blog');
+        return $this->redirect('http://www.doyoubuzz.com/julian-layen');
     }
 
     /**

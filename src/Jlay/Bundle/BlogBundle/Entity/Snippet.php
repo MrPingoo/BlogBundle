@@ -24,14 +24,14 @@ class Snippet
     /**
      * @var boolean
      *
-     * @ORM\Column(name="hidden", type="boolean")
+     * @ORM\Column(name="hidden", type="boolean", nullable=true)
      */
     private $hidden;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="deleted", type="boolean")
+     * @ORM\Column(name="deleted", type="boolean", nullable=true)
      */
     private $deleted;
 

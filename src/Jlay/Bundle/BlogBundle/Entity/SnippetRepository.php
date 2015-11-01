@@ -10,4 +10,15 @@ namespace Jlay\Bundle\BlogBundle\Entity;
  */
 class SnippetRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Select snippets by Path
+     *
+     * @return array
+     */
+    public function findAllPath(){
+
+        return $this->getEntityManager()
+            ->createQuery('SELECT DISTINCT p.path FROM JlayBlogBundle:Snippet p ORDER BY p.path ASC')
+            ->getResult();
+    }
 }

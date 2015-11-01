@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Jlay\Bundle\BlogBundle\Entity\Snippet;
 use Jlay\Bundle\BlogBundle\Form\SnippetType;
+use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
 
 /**
  * Snippet controller.
@@ -28,7 +29,7 @@ class SnippetController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JlayBlogBundle:Snippet')->findAll();
+        $entities = $em->getRepository('JlayBlogBundle:Snippet')->findBy(array(), array('crdate' => 'DESC'), null, null);
 
         return array(
             'entities' => $entities,
@@ -74,7 +75,19 @@ class SnippetController extends Controller
             'action' => $this->generateUrl('snippet_create'),
             'method' => 'POST',
         ));
-
+        $form->add('bodytext', 'ckeditor');
+        $form->add('crdate', 'datetime', array(
+            'format' => 'dd/MM/yyyy hh:mm',
+            'input' => 'datetime',
+            'widget' => 'single_text',
+            'data' => new \DateTime("now")
+        ));
+        $form->add('path', 'choice', array(
+            'choice_list' => new ChoiceList(
+                array(1, 2, 3, 4 ,5 ,6 ,7),
+                array('Php', 'TYPO3', 'Symfony', 'CSS', 'Solr', 'AdminSys', 'Veille', 'Autre')
+            )
+        ));
         $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
@@ -163,7 +176,20 @@ class SnippetController extends Controller
             'action' => $this->generateUrl('snippet_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
-
+        $form->add('bodytext', 'ckeditor');
+        $form->add('crdate', 'datetime', array(
+            'format' => 'dd/MM/yyyy hh:mm',
+            'input' => 'datetime',
+            'widget' => 'single_text',
+            'data' => new \DateTime("now")
+        ));
+        $form->add('path', 'choice', array(
+            'choice_list' => new ChoiceList(
+                array(1, 2, 3, 4 ,5 ,6 ,7, 8),
+                array('Php', 'TYPO3', 'Symfony', 'CSS', 'Solr', 'AdminSys', 'Veille', 'Autre')
+            ),
+            'data' => intval($entity->getPath())
+        ));
         $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;

@@ -28,7 +28,7 @@ class PostController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JlayBlogBundle:Post')->findAll();
+        $entities = $em->getRepository('JlayBlogBundle:Post')->findBy(array(), array('crdate' => 'DESC'), null, null);
 
         return array(
             'entities' => $entities,

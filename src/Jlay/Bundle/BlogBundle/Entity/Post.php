@@ -31,9 +31,9 @@ class Post
     /**
      * @var boolean
      *
-     * @ORM\Column(name="deleted", type="boolean", nullable=true)
+     * @ORM\Column(name="disqus", type="boolean", nullable=true)
      */
-    private $deleted;
+    private $disqus;
 
     /**
      * @var string
@@ -106,27 +106,27 @@ class Post
     }
 
     /**
-     * Set deleted
+     * Set disqus
      *
-     * @param boolean $deleted
+     * @param boolean $disqus
      *
      * @return Post
      */
-    public function setDeleted($deleted)
+    public function setDisqus($disqus)
     {
-        $this->deleted = $deleted;
+        $this->disqus = $disqus;
 
         return $this;
     }
 
     /**
-     * Get deleted
+     * Get disqus
      *
      * @return boolean
      */
-    public function getDeleted()
+    public function getDisqus()
     {
-        return $this->deleted;
+        return $this->disqus;
     }
 
     /**
