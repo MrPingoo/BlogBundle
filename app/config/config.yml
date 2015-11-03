@@ -109,7 +109,7 @@ fm_elfinder:
                         driver: LocalFileSystem
                         path: uploads
                         upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
-                        upload_deny: ['all']
+                        upload_deny: [''] # JL 20151103 upload_deny: ['all'] 
                         upload_max_size: 2M
 
 ivory_ck_editor:
